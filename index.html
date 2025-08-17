@@ -44,6 +44,12 @@
 
       try {
         const res = await fetch(`${API_URL}/${field}/${term}`);
+        if (!res.ok) {
+          document.getElementById("employee-container").innerHTML =
+          `<p class="text-center text-red-500 col-span-full">No data found (status ${res.status}).</p>`;
+          return;
+        }
+
         const data = await res.json();
         displayEmployees(data);
       } catch (error) {
