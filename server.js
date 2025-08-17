@@ -2,8 +2,10 @@ const express = require("express");
 const apiRouter = require("./routes/apiRouter.js")
 const cors = require("cors");
 const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const PORT=8000
+const PORT=process.env.PORT;
 const app=express()
 app.use(cors())
 app.use(express.static(path.join(__dirname)));
